@@ -1,9 +1,6 @@
-mod archivos;
-mod pieza;
-
 use std::io::Error;
 use crate::archivos::leer_archivo;
-use crate::pieza::crear_piezas;
+use crate::pieza::crear_pieza;
 
 fn main() -> Result<(), Error>{
 

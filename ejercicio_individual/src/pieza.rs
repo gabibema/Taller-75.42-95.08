@@ -1,3 +1,11 @@
+use std::io::{Error, ErrorKind::InvalidInput};
+use crate::peon::Peon;
+use crate::rey::Rey;
+use crate::alfil::Alfil;
+use crate::torre::Torre;
+use crate::dama::Dama;
+use crate::caballo::Caballo;
+
 
 const REY_B: char = 'r';
 const PEON_B: char = 'p';
@@ -18,27 +26,22 @@ pub enum Color{
     Negro
 }
 
-pub enum Pieza{
-    Peon {posicion: (u8,u8), color: Color},
-    Rey {posicion: (u8,u8), color: Color},
-    Alfil {posicion: (u8,u8), color: Color},
-    Caballo {posicion: (u8,u8), color: Color},
-    Dama {posicion: (u8,u8), color: Color},
-    Torre {posicion: (u8,u8), color: Color},
-    Vacia
+pub(crate) trait Captura {
+    fn puede_capturar(&self, other: &dyn Captura) -> bool;
+    fn color(&self) -> &Color;
 }
 
-pub fn crear_pieza(posicion: (u8,u8), pieza: char) -> Pieza {
+pub fn crear_pieza(posicion: (u8,u8), pieza: char) -> Result< Box<dyn Captura>,Error> {
     let color : Color = if pieza.is_uppercase() { Color::Blanco} else { Color::Negro } ;
 
     match pieza {
-        PEON_B | PEON_N => Pieza::Peon { posicion, color },
-        REY_B | REY_N => Pieza::Rey { posicion, color },
-        ALFIL_B | ALFIL_N => Pieza::Alfil { posicion, color },
-        CABALLO_N | CABALLO_B => Pieza::Caballo { posicion, color },
-        DAMA_B | DAMA_N => Pieza::Dama { posicion, color },
-        TORRE_B | TORRE_N => Pieza::Torre { posicion, color },
-        _ => Pieza::Vacia
+        PEON_B | PEON_N => Ok(Box::new(Peon { posicion, color })),
+        REY_B | REY_N => Ok(Box::new(Rey { posicion, color })),
+        ALFIL_B | ALFIL_N => Ok(Box::new(Alfil { posicion, color })),
+        CABALLO_N | CABALLO_B => Ok(Box::new(Caballo { posicion, color })),
+        DAMA_B | DAMA_N => Ok(Box::new(Dama { posicion, color })),
+        TORRE_B | TORRE_N => Ok(Box::new(Torre { posicion, color })),
+        _ => Err(Error::new(InvalidInput, "[ERROR] El tablero contiene un carácter inválido"))
     }
 }
 
