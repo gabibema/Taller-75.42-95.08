@@ -1,9 +1,14 @@
-use std::env::read_to_string;
+mod archivos;
 
+use std::io::Error;
+use crate::archivos::leer_archivo;
 
-fn main() {
-    let args: Vec<String> = env::args().collect();
-    let path = &args[1];
+fn main() -> Result<(), Error>{
 
-    let tablero = read_to_string(path);
+    let tablero : String = match leer_archivo(){
+            Ok(resultado) => resultado,
+            Err(error) => return Err(error),
+    };
+
+    Ok(())
 }
