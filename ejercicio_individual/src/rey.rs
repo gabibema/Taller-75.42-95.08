@@ -15,11 +15,12 @@ impl Rey{
 
 impl Pieza for Rey {
     fn puede_capturar(&self, pieza: &dyn Pieza) -> bool {
-        if pieza.color() == self.color(){
-            return true;
-        }
-        return false;
+        if pieza.color() == self.color(){ return false; }
 
+        let x_diff: u8 = self.posicion().0.abs_diff(pieza.posicion().0);
+        let y_diff: u8 = self.posicion().1.abs_diff(pieza.posicion().1);
+
+        x_diff <= 1 && y_diff <= 1
     }
 
     fn color(&self) -> &Color {
@@ -30,3 +31,4 @@ impl Pieza for Rey {
         return &self.posicion;
     }
 }
+
