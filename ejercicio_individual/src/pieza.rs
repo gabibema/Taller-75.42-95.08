@@ -26,21 +26,32 @@ pub enum Color{
     Negro
 }
 
-pub(crate) trait Captura {
-    fn puede_capturar(&self, other: &dyn Captura) -> bool;
-    fn color(&self) -> &Color;
+impl PartialEq for Color {
+    fn eq(&self, otro: &Self) -> bool {
+        match (self, otro) {
+            (Color::Blanco, Color::Blanco) => true,
+            (Color::Negro, Color::Negro) => true,
+            _ => false,
+        }
+    }
 }
 
-pub fn crear_pieza(posicion: (u8,u8), pieza: char) -> Result< Box<dyn Captura>,Error> {
+pub trait Pieza {
+    fn puede_capturar(&self, other: &dyn Pieza) -> bool;
+    fn color(&self) -> &Color;
+    fn posicion(&self) -> &(usize,usize);
+}
+
+pub fn crear_pieza(posicion: (usize,usize), pieza: char) -> Result< Box<dyn Pieza>,Error> {
     let color : Color = if pieza.is_uppercase() { Color::Blanco} else { Color::Negro } ;
 
     match pieza {
-        PEON_B | PEON_N => Ok(Box::new(Peon { posicion, color })),
-        REY_B | REY_N => Ok(Box::new(Rey { posicion, color })),
-        ALFIL_B | ALFIL_N => Ok(Box::new(Alfil { posicion, color })),
-        CABALLO_N | CABALLO_B => Ok(Box::new(Caballo { posicion, color })),
-        DAMA_B | DAMA_N => Ok(Box::new(Dama { posicion, color })),
-        TORRE_B | TORRE_N => Ok(Box::new(Torre { posicion, color })),
+        PEON_B | PEON_N => Ok(Box::new(Peon::new(posicion, color ))),
+        REY_B | REY_N => Ok(Box::new(Rey::new(posicion, color ))),
+        ALFIL_B | ALFIL_N => Ok(Box::new(Alfil::new(posicion, color ))),
+        CABALLO_N | CABALLO_B => Ok(Box::new(Caballo::new(posicion, color ))),
+        DAMA_B | DAMA_N => Ok(Box::new(Dama::new(posicion, color ))),
+        TORRE_B | TORRE_N => Ok(Box::new(Torre::new(posicion, color ))),
         _ => Err(Error::new(InvalidInput, "[ERROR] El tablero contiene un carácter inválido"))
     }
 }

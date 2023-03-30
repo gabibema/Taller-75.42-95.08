@@ -1,6 +1,6 @@
 use std::io::Error;
-use crate::archivos::leer_archivo;
-use crate::pieza::crear_pieza;
+use ejercicio_individual::archivos::leer_archivo;
+use ejercicio_individual::pieza::crear_pieza;
 
 fn main() -> Result<(), Error>{
 
@@ -10,6 +10,5 @@ fn main() -> Result<(), Error>{
     };
 
     //let piezas = crear_piezas(&tablero);
-
     Ok(())
 }

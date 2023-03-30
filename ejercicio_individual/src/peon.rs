@@ -1,17 +1,22 @@
 use crate::pieza::Color;
-use crate::pieza::Captura;
-
-
+use crate::pieza::Pieza;
 
 pub(crate) struct Peon {
-    posicion: (u8, u8),
-    color: Color
+     posicion: (usize, usize),
+     color: Color
 }
 
-impl Captura for Peon {
-    fn puede_capturar(&self, pieza: &dyn Captura) -> bool {
+impl Peon{
+    pub(crate) fn new(posicion: (usize, usize), color: Color) -> Self {
+        Peon { color, posicion }
+    }
+}
 
-        if self.color == pieza.color { return false };
+impl Pieza for Peon {
+    fn puede_capturar(&self, pieza: &dyn Pieza) -> bool {
+
+        if self.color == *pieza.color() { return false };
+        return true;
         /*
         match self.color {
             Color::White => ox == x - 1 && (oy == y - 1 || oy == y + 1),
@@ -21,5 +26,9 @@ impl Captura for Peon {
 
     fn color(&self) -> &Color {
         return &self.color;
+    }
+
+    fn posicion(&self) -> &(usize,usize){
+        return &self.posicion;
     }
 }

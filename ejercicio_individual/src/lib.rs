@@ -1,8 +1,8 @@
-mod archivos;
-mod pieza;
-mod peon;
-mod rey;
-mod dama;
-mod torre;
-mod alfil;
-mod caballo;
+pub mod archivos;
+pub mod pieza;
+pub mod peon;
+pub mod rey;
+pub mod dama;
+pub mod torre;
+pub mod alfil;
+pub mod caballo;
