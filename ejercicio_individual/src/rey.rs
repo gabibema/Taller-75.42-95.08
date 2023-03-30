@@ -1,14 +1,14 @@
 use crate::pieza::{Pieza, Color};
 
 pub(crate) struct Rey {
-    posicion: (usize,usize),
+    posicion: (i8,i8),
     color: Color
 }
 
 
 impl Rey{
-    pub(crate) fn new(posicion: (usize, usize), color: Color) -> Self {
-        Rey { posicion, color }
+    pub(crate) fn new(posicion: (i8,i8), color: Color) -> Self {
+        Rey {posicion, color }
     }
 }
 
@@ -26,7 +26,7 @@ impl Pieza for Rey {
         return &self.color;
     }
 
-    fn posicion(&self) -> &(usize,usize){
+    fn posicion(&self) -> &(i8,i8){
         return &self.posicion;
     }
 }

@@ -1,12 +1,12 @@
 use crate::pieza::{Pieza, Color};
 
 pub(crate) struct Torre {
-    posicion: (usize,usize),
+    posicion: (i8,i8),
     color: Color
 }
 
 impl Torre{
-    pub(crate) fn new(posicion: (usize, usize), color: Color) -> Self {
+    pub(crate) fn new(posicion: (i8,i8), color: Color) -> Self {
         Torre { color, posicion }
     }
 }
@@ -25,7 +25,7 @@ impl Pieza for Torre {
         return &self.color;
     }
 
-    fn posicion(&self) -> &(usize,usize){
+    fn posicion(&self) -> &(i8,i8){
         return &self.posicion;
     }
 }
