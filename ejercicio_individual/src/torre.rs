@@ -11,7 +11,6 @@ impl Torre{
     }
 }
 
-
 impl Pieza for Torre {
     fn puede_capturar(&self, pieza: &dyn Pieza) -> bool {
         if pieza.color() == self.color(){ return false; }
@@ -24,7 +23,6 @@ impl Pieza for Torre {
             (_, 0) => true,
             (_, _) => false
         }
-
     }
 
     fn color(&self) -> &Color {
