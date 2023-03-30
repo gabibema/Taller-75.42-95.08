@@ -14,10 +14,16 @@ impl Torre{
 
 impl Pieza for Torre {
     fn puede_capturar(&self, pieza: &dyn Pieza) -> bool {
-        if pieza.color() == self.color(){
-            return true;
+        if pieza.color() == self.color(){ return false; }
+
+        let x_diff: u8 = self.posicion().0.abs_diff(pieza.posicion().0);
+        let y_diff: u8 = self.posicion().1.abs_diff(pieza.posicion().1);
+
+        match(x_diff, y_diff){
+            (0,_) => true,
+            (_, 0) => true,
+            (_, _) => false
         }
-        return false;
 
     }
 
