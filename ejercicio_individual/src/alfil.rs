@@ -19,16 +19,14 @@ impl Pieza for Alfil {
         let x_diff: u8 = self.posicion().0.abs_diff(pieza.posicion().0);
         let y_diff: u8 = self.posicion().1.abs_diff(pieza.posicion().1);
 
-        match(x_diff, y_diff){
-            (x, y) => x == y
-        }
+        x_diff == y_diff
     }
 
     fn color(&self) -> &Color {
-        return &self.color;
+        &self.color
     }
 
     fn posicion(&self) -> &(i8,i8){
-        return &self.posicion;
+        &self.posicion
     }
 }

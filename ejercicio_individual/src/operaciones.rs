@@ -48,7 +48,7 @@ fn estado_pieza(pieza_1 : &Box<dyn Pieza>, pieza_2 : &Box<dyn Pieza>) -> i8{
 }
 
 fn estado_piezas(pieza_1 : &Box<dyn Pieza>, pieza_2 : &Box<dyn Pieza>) -> i8{
-    return estado_pieza(pieza_1, pieza_2) + estado_pieza(pieza_2, pieza_1)
+    estado_pieza(pieza_1, pieza_2) + estado_pieza(pieza_2, pieza_1)
 }
 
 pub fn mostrar_resultado(piezas: &Vec<Box<dyn Pieza>>){

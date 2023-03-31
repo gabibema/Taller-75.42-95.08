@@ -48,10 +48,6 @@ pub enum Color{
 
 impl PartialEq for Color {
     fn eq(&self, otro: &Self) -> bool {
-        match (self, otro) {
-            (Color::Blanco, Color::Blanco) => true,
-            (Color::Negro, Color::Negro) => true,
-            _ => false,
-        }
+        matches!((self, otro), (Color::Blanco, Color::Blanco) | (Color::Negro, Color::Negro))
     }
 }

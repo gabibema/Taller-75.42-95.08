@@ -26,10 +26,10 @@ impl Pieza for Peon {
     }
 
     fn color(&self) -> &Color {
-        return &self.color;
+        &self.color
     }
 
     fn posicion(&self) -> &(i8,i8){
-        return &self.posicion;
+        &self.posicion
     }
 }
