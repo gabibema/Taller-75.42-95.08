@@ -17,12 +17,12 @@ pub fn crear_pieza(posicion: (i8,i8), pieza: char) -> Result< Box<dyn Pieza>,Err
     let color : Color = if pieza.is_uppercase() { Color::Blanco} else { Color::Negro } ;
 
     match pieza {
-        PEON_B | PEON_N => Ok(Box::new(Peon::new(posicion, color ))),
-        REY_B | REY_N => Ok(Box::new(Rey::new(posicion, color ))),
-        ALFIL_B | ALFIL_N => Ok(Box::new(Alfil::new(posicion, color ))),
-        CABALLO_N | CABALLO_B => Ok(Box::new(Caballo::new(posicion, color ))),
-        DAMA_B | DAMA_N => Ok(Box::new(Dama::new(posicion, color ))),
-        TORRE_B | TORRE_N => Ok(Box::new(Torre::new(posicion, color ))),
+        PEON_B      | PEON_N => Ok(Box::new(Peon::new(posicion, color ))),
+        ALFIL_B     | ALFIL_N => Ok(Box::new(Alfil::new(posicion, color ))),
+        CABALLO_N   | CABALLO_B => Ok(Box::new(Caballo::new(posicion, color ))),
+        TORRE_B     | TORRE_N => Ok(Box::new(Torre::new(posicion, color ))),
+        DAMA_B      | DAMA_N => Ok(Box::new(Dama::new(posicion, color ))),
+        REY_B       | REY_N => Ok(Box::new(Rey::new(posicion, color ))),
         _ => Err(Error::new(InvalidInput, "[ERROR] El tablero contiene un carácter inválido"))
     }
 }

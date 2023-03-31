@@ -12,6 +12,11 @@ pub(crate) mod constantes {
     pub const ALFIL_N: char = 'A';
     pub const CABALLO_N: char = 'C';
     pub const TORRE_N: char = 'T';
+
+    pub const SALTO_LINEA: char = '\n';
+    pub const VACIO: char = '-';
+    pub const MAX_TABLERO: i8 = 8;
+
 }
 
 pub enum Color{
