@@ -6,3 +6,4 @@ pub mod dama;
 pub mod torre;
 pub mod alfil;
 pub mod caballo;
+pub mod utils;

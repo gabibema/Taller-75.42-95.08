@@ -1,5 +1,5 @@
-use crate::pieza::Color;
 use crate::pieza::Pieza;
+use crate::utils::Color;
 
 pub(crate) struct Peon {
      posicion: (i8,i8),

@@ -1,4 +1,5 @@
-use crate::pieza::{Pieza, Color};
+use crate::pieza::Pieza;
+use crate::utils::Color;
 
 pub(crate) struct Torre {
     posicion: (i8,i8),

@@ -1,40 +1,11 @@
 use std::io::{Error, ErrorKind::InvalidInput};
-use crate::peon::Peon;
-use crate::rey::Rey;
-use crate::alfil::Alfil;
-use crate::torre::Torre;
-use crate::dama::Dama;
+use crate::utils::{Color, constantes::*};
 use crate::caballo::Caballo;
-
-
-const REY_B: char = 'r';
-const PEON_B: char = 'p';
-const DAMA_B: char = 'd';
-const ALFIL_B: char = 'a';
-const CABALLO_B: char = 'c';
-const TORRE_B: char = 't';
-
-const REY_N: char = 'R';
-const PEON_N: char = 'P';
-const DAMA_N: char = 'D';
-const ALFIL_N: char = 'A';
-const CABALLO_N: char = 'C';
-const TORRE_N: char = 'T';
-
-pub enum Color{
-    Blanco,
-    Negro
-}
-
-impl PartialEq for Color {
-    fn eq(&self, otro: &Self) -> bool {
-        match (self, otro) {
-            (Color::Blanco, Color::Blanco) => true,
-            (Color::Negro, Color::Negro) => true,
-            _ => false,
-        }
-    }
-}
+use crate::torre::Torre;
+use crate::alfil::Alfil;
+use crate::peon::Peon;
+use crate::dama::Dama;
+use crate::rey::Rey;
 
 pub trait Pieza {
     fn puede_capturar(&self, other: &dyn Pieza) -> bool;
