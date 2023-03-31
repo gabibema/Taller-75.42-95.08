@@ -14,7 +14,7 @@ impl Dama{
 
 
 impl Pieza for Dama {
-    fn puede_capturar(&self, pieza: &dyn Pieza) -> bool {
+    fn puede_capturar(&self, pieza: &Box<dyn Pieza>) -> bool {
         if pieza.color() == self.color(){ return false; }
 
         let x_diff: u8 = self.posicion().0.abs_diff(pieza.posicion().0);

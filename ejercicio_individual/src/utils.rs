@@ -14,8 +14,30 @@ pub(crate) mod constantes {
     pub const TORRE_N: char = 'T';
 
     pub const SALTO_LINEA: char = '\n';
-    pub const VACIO: char = '-';
+    pub const VACIO: char = '_';
+    pub const ESPACIO: char = ' ';
+
     pub const MAX_TABLERO: i8 = 8;
+    pub const MAX_PIEZAS: usize = 2;
+
+    pub const NO_CAPTURA: i8 = 0;
+    pub const BLANCA_CAPTURA: i8 = 1;
+    pub const NEGRA_CAPTURA: i8 = 2;
+
+    pub const MENSAJE_NINGUNA: char = 'P';
+    pub const MENSAJE_BLANCA: char = 'B';
+    pub const MENSAJE_NEGRA: char = 'N';
+    pub const MENSAJE_EMPATE: char = 'E';
+
+}
+
+pub(crate) mod errores {
+    use std::io::Error;
+    use std::io::ErrorKind::{InvalidData,InvalidInput};
+
+    pub fn error_piezas_invalidas() -> Error{ Error::new(InvalidData, "[ERROR] El tablero debe contener dos piezas únicamente") }
+    pub fn error_pieza_invalida() -> Error{ Error::new(InvalidInput, "[ERROR] El tablero contiene un carácter inválido")}
+    pub fn error_path_invalido() -> Error { Error::new(InvalidInput, "[ERROR] No se ingresó el path del tablero." )}
 
 }
 

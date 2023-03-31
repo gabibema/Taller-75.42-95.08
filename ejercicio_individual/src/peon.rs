@@ -13,7 +13,7 @@ impl Peon{
 }
 
 impl Pieza for Peon {
-    fn puede_capturar(&self, pieza: &dyn Pieza) -> bool {
+    fn puede_capturar(&self, pieza: &Box<dyn Pieza>) -> bool {
         if self.color() == pieza.color() { return false };
 
         let x_diff: u8 = self.posicion().0.abs_diff(pieza.posicion().0);
