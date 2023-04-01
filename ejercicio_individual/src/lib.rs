@@ -1,11 +1,10 @@
-pub mod operaciones;
+pub mod alfil;
 pub mod archivos;
+pub mod caballo;
+pub mod dama;
+pub mod operaciones;
+pub mod peon;
 pub mod pieza;
 pub mod rey;
-pub mod peon;
-pub mod dama;
 pub mod torre;
-pub mod alfil;
-pub mod caballo;
 pub mod utils;
-
