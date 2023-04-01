@@ -32,3 +32,25 @@ impl Pieza for Rey {
         &self.posicion
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::peon::Peon;
+    use super::*;
+
+    #[test]
+    fn rey_captura() {
+        let rey = Rey::new((0,0), Color::Blanco);
+        let peon = Peon::new((0,1), Color::Negro);
+
+        assert_eq!(rey.puede_capturar(&peon), true);
+    }
+
+    #[test]
+    fn rey_no_captura() {
+        let rey = Rey::new((0,0), Color::Blanco);
+        let peon = Peon::new((0,2), Color::Negro);
+
+        assert_eq!(rey.puede_capturar(&peon), false);
+    }
+}

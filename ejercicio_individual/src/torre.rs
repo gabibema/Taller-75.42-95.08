@@ -36,3 +36,26 @@ impl Pieza for Torre {
         &self.posicion
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::peon::Peon;
+    use super::*;
+
+    #[test]
+    fn torre_captura() {
+        let torre = Torre::new((0,0), Color::Blanco);
+        let peon = Peon::new((0,4), Color::Negro);
+
+        assert_eq!(torre.puede_capturar(&peon), true);
+    }
+
+    #[test]
+    fn torre_no_captura() {
+        let torre = Torre::new((0,0), Color::Blanco);
+        let peon = Peon::new((1,2), Color::Negro);
+
+        assert_eq!(torre.puede_capturar(&peon), false);
+    }
+}
+

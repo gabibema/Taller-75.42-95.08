@@ -76,3 +76,35 @@ pub fn mostrar_resultado(piezas: &[Box<dyn Pieza>; MAX_PIEZAS]) {
         _ => println!("{}", MENSAJE_EMPATE),
     }
 }
+
+
+#[cfg(test)]
+mod tests {
+    use crate::peon::Peon;
+    use crate::torre::Torre;
+    use super::*;
+
+    #[test]
+    fn estado_blanca_captura() {
+        let pieza1 = Peon::new((0,0), Color::Blanco);
+        let pieza2 = Torre::new((1,1), Color::Negro);
+
+        assert_eq!(estado_pieza(&pieza1, &pieza2), BLANCA_CAPTURA);
+    }
+
+    #[test]
+    fn estado_blancas_ganan() {
+        let pieza1 = Peon::new((0,0), Color::Blanco);
+        let pieza2 = Torre::new((1,1), Color::Negro);
+
+        assert_eq!(estado_piezas(&pieza1, &pieza2), BLANCA_CAPTURA);
+    }
+
+    #[test]
+    fn estado_negras_ganan() {
+        let pieza1 = Peon::new((3,1), Color::Blanco);
+        let pieza2 = Torre::new((2,1), Color::Negro);
+
+        assert_eq!(estado_piezas(&pieza1, &pieza2), NEGRA_CAPTURA);
+    }
+}

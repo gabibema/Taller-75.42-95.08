@@ -35,3 +35,24 @@ impl Pieza for Peon {
         &self.posicion
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn peon_captura() {
+        let peon = Peon::new((4,4), Color::Negro);
+        let peon2 = Peon::new((3,3), Color::Blanco);
+
+        assert_eq!(peon.puede_capturar(&peon2), true);
+    }
+
+    #[test]
+    fn peon_no_captura() {
+        let peon = Peon::new((4,4), Color::Negro);
+        let peon2 = Peon::new((5,6), Color::Blanco);
+
+        assert_eq!(peon.puede_capturar(&peon2), false);
+    }
+}

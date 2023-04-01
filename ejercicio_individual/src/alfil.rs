@@ -32,3 +32,26 @@ impl Pieza for Alfil {
         &self.posicion
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::peon::Peon;
+    use super::*;
+
+    #[test]
+    fn alfil_captura() {
+        let alfil = Alfil::new((1,1), Color::Negro);
+        let peon = Peon::new((3,3), Color::Blanco);
+
+        assert_eq!(alfil.puede_capturar(&peon), true);
+    }
+
+    #[test]
+    fn alfil_no_captura() {
+        let alfil = Alfil::new((1,2), Color::Negro);
+        let peon = Peon::new((3,3), Color::Blanco);
+
+        assert_eq!(alfil.puede_capturar(&peon), false);
+    }
+}
+

@@ -36,3 +36,31 @@ impl Pieza for Dama {
         &self.posicion
     }
 }
+
+
+#[cfg(test)]
+mod tests {
+    use crate::peon::Peon;
+    use super::*;
+
+    #[test]
+    fn dama_captura() {
+        let dama = Dama::new((2,2), Color::Negro);
+        let peon = Peon::new((4,4), Color::Blanco);
+        let peon2 = Peon::new((2,4), Color::Blanco);
+        let peon3 = Peon::new((4,2), Color::Blanco);
+
+        assert_eq!(dama.puede_capturar(&peon), true);
+        assert_eq!(dama.puede_capturar(&peon2), true);
+        assert_eq!(dama.puede_capturar(&peon3), true);
+    }
+
+    #[test]
+    fn dama_no_captura() {
+        let dama = Dama::new((1,2), Color::Negro);
+        let peon = Peon::new((3,3), Color::Blanco);
+
+        assert_eq!(dama.puede_capturar(&peon), false);
+    }
+}
+
