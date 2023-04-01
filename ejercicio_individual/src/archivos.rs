@@ -5,16 +5,14 @@ use std::io::Error;
 
 const CANTIDAD_ARGUMENTOS: usize = 2;
 
+
+
+
 pub fn leer_archivo() -> Result<String, Error> {
     let args: Vec<String> = args().collect();
     if args.len() != CANTIDAD_ARGUMENTOS {
         return Err(error_path_invalido());
     }
 
-    let archivo_leido = match read_to_string(&args[1]) {
-        Err(error) => return Err(error),
-        Ok(archivo_leido) => archivo_leido,
-    };
-
-    Ok(archivo_leido)
+    read_to_string(&args[1])
 }

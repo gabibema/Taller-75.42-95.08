@@ -64,7 +64,7 @@ fn estado_pieza(pieza_1: &dyn Pieza, pieza_2: &dyn Pieza) -> i8 {
     }
 }
 
-fn estado_piezas(pieza_1: &dyn Pieza, pieza_2: &dyn Pieza) -> i8 {
+pub fn estado_piezas(pieza_1: &dyn Pieza, pieza_2: &dyn Pieza) -> i8 {
     estado_pieza(pieza_1, pieza_2) + estado_pieza(pieza_2, pieza_1)
 }
 

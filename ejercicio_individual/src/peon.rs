@@ -22,8 +22,8 @@ impl Pieza for Peon {
         let y_diff: i8 = self.posicion().1 - pieza.posicion().1;
 
         match self.color {
-            Color::Negro => x_diff == 1 && y_diff == 1,
-            Color::Blanco => x_diff == 1 && y_diff == -1,
+            Color::Negro => x_diff == 1 && y_diff == -1,
+            Color::Blanco => x_diff == 1 && y_diff == 1,
         }
     }
 
@@ -43,7 +43,7 @@ mod tests {
     #[test]
     fn peon_captura() {
         let peon = Peon::new((4,4), Color::Negro);
-        let peon2 = Peon::new((3,3), Color::Blanco);
+        let peon2 = Peon::new((5,5), Color::Blanco);
 
         assert_eq!(peon.puede_capturar(&peon2), true);
     }

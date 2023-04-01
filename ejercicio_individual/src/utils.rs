@@ -1,4 +1,4 @@
-pub(crate) mod constantes {
+pub mod constantes {
     pub const REY_B: char = 'r';
     pub const PEON_B: char = 'p';
     pub const DAMA_B: char = 'd';
@@ -23,6 +23,7 @@ pub(crate) mod constantes {
     pub const NO_CAPTURA: i8 = 0;
     pub const BLANCA_CAPTURA: i8 = 1;
     pub const NEGRA_CAPTURA: i8 = 2;
+    pub const AMBAS_CAPTURAN: i8 = 3;
 
     pub const MENSAJE_NINGUNA: char = 'P';
     pub const MENSAJE_BLANCA: char = 'B';
@@ -30,7 +31,7 @@ pub(crate) mod constantes {
     pub const MENSAJE_EMPATE: char = 'E';
 }
 
-pub(crate) mod errores {
+pub mod errores {
     use std::io::Error;
     use std::io::ErrorKind::{InvalidData, InvalidInput};
 
