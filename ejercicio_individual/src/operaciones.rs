@@ -4,6 +4,7 @@ use crate::utils::errores::error_piezas_invalidas;
 use crate::utils::Color;
 use std::io::Error;
 
+///Valida que el tablero sólo contenga 2 piezas de diferente color y el tamaño sea el correcto.
 fn validar_tablero(
     ultima_fila: i8,
     piezas: [Box<dyn Pieza>; MAX_PIEZAS],
@@ -19,6 +20,7 @@ fn validar_tablero(
     Ok(piezas)
 }
 
+///Devuelve un vector de piezas a partir del tablero recibido.
 pub fn crear_piezas(tablero: &mut str) -> Result<[Box<dyn Pieza>; MAX_PIEZAS], Error> {
     let mut piezas: [Box<dyn Pieza>; MAX_PIEZAS] = [Vacio::new(), Vacio::new()];
     let mut posicion: (i8, i8) = (0, 0);
@@ -53,6 +55,9 @@ pub fn crear_piezas(tablero: &mut str) -> Result<[Box<dyn Pieza>; MAX_PIEZAS], E
     validar_tablero(posicion.0, piezas, indice)
 }
 
+///Devuelve NO_CAPTURA si la pieza 1 no puede capturar a la pieza 2,
+///NEGRA_CAPTURA si la pieza 1 (negra) captura a la pieza2
+///BLANCA_CAPTURA si la pieza 1 (blanca) captura a la pieza2
 fn estado_pieza(pieza_1: &dyn Pieza, pieza_2: &dyn Pieza) -> i8 {
     if !pieza_1.puede_capturar(pieza_2) {
         return NO_CAPTURA;
@@ -64,10 +69,16 @@ fn estado_pieza(pieza_1: &dyn Pieza, pieza_2: &dyn Pieza) -> i8 {
     }
 }
 
+///Devuelve la suma de pieza1 captura a pieza2 y viceversa.
 pub fn estado_piezas(pieza_1: &dyn Pieza, pieza_2: &dyn Pieza) -> i8 {
     estado_pieza(pieza_1, pieza_2) + estado_pieza(pieza_2, pieza_1)
 }
 
+///Muestra por pantalla el estado de la partida
+/// MENSAJE_NINGUNA si ninguna pieza puede capturar
+/// MENSAJE_EMPATE si ambas piezas pueden capturar
+/// MENSAJE_NEGRA si sólo la pieza negra captura a la blanca
+/// MENSAJE_BLANCA si sólo la pieza blanca captura a la negra
 pub fn mostrar_resultado(piezas: &[Box<dyn Pieza>; MAX_PIEZAS]) {
     match estado_piezas(&*piezas[0], &*piezas[1]) {
         NO_CAPTURA => println!("{}", MENSAJE_NINGUNA),

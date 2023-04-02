@@ -12,6 +12,7 @@ impl Caballo {
     }
 }
 
+///Implementación de la pieza Caballo con su movimiento de captura correspondiente
 impl Pieza for Caballo {
     fn puede_capturar(&self, pieza: &dyn Pieza) -> bool {
         if pieza.color() == self.color() {

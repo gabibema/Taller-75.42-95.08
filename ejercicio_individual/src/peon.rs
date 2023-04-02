@@ -12,6 +12,7 @@ impl Peon {
     }
 }
 
+///Implementación de la pieza Peón con su movimiento de captura correspondiente
 impl Pieza for Peon {
     fn puede_capturar(&self, pieza: &dyn Pieza) -> bool {
         if self.color() == pieza.color() {

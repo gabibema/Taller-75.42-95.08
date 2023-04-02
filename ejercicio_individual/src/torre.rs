@@ -12,6 +12,7 @@ impl Torre {
     }
 }
 
+///Implementación de la pieza Torre con su movimiento de captura correspondiente
 impl Pieza for Torre {
     fn puede_capturar(&self, pieza: &dyn Pieza) -> bool {
         if pieza.color() == self.color() {

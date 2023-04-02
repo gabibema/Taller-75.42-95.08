@@ -12,6 +12,7 @@ impl Rey {
     }
 }
 
+///Implementación de la pieza Rey con su movimiento de captura correspondiente
 impl Pieza for Rey {
     fn puede_capturar(&self, pieza: &dyn Pieza) -> bool {
         if pieza.color() == self.color() {

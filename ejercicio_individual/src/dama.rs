@@ -12,6 +12,7 @@ impl Dama {
     }
 }
 
+///Implementación de la pieza Dama con su movimiento de captura correspondiente
 impl Pieza for Dama {
     fn puede_capturar(&self, pieza: &dyn Pieza) -> bool {
         if pieza.color() == self.color() {

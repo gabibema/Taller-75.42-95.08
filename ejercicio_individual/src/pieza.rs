@@ -8,12 +8,14 @@ use crate::utils::errores::error_pieza_invalida;
 use crate::utils::{constantes::*, Color};
 use std::io::Error;
 
+/// Trait que define el comportamiento común a las piezas, siendo la captura y sus atributos para compararlos.
 pub trait Pieza {
     fn puede_capturar(&self, other: &dyn Pieza) -> bool;
     fn color(&self) -> &Color;
     fn posicion(&self) -> &(i8, i8);
 }
 
+///Crea una pieza a partir de su posición y el carácter asociado
 pub fn crear_pieza(posicion: (i8, i8), pieza: char) -> Result<Box<dyn Pieza>, Error> {
     let color: Color = if pieza.is_uppercase() {
         Color::Blanco
@@ -32,6 +34,7 @@ pub fn crear_pieza(posicion: (i8, i8), pieza: char) -> Result<Box<dyn Pieza>, Er
     }
 }
 
+/// Pieza vacía para inicializar arrays
 pub(crate) struct Vacio {
     posicion: (i8, i8),
     color: Color,

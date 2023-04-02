@@ -12,6 +12,7 @@ impl Alfil {
     }
 }
 
+///Implementación de la pieza Alfil con su movimiento de captura correspondiente
 impl Pieza for Alfil {
     fn puede_capturar(&self, pieza: &dyn Pieza) -> bool {
         if pieza.color() == self.color() {
