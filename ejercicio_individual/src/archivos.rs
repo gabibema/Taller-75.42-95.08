@@ -5,9 +5,6 @@ use std::io::Error;
 
 const CANTIDAD_ARGUMENTOS: usize = 2;
 
-
-
-
 pub fn leer_archivo() -> Result<String, Error> {
     let args: Vec<String> = args().collect();
     if args.len() != CANTIDAD_ARGUMENTOS {

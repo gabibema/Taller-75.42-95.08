@@ -35,14 +35,14 @@ impl Pieza for Caballo {
 
 #[cfg(test)]
 mod tests {
-    use crate::peon::Peon;
     use super::*;
+    use crate::peon::Peon;
 
     #[test]
     fn caballo_captura() {
-        let caballo = Caballo::new((1,1), Color::Negro);
-        let peon = Peon::new((2,3), Color::Blanco);
-        let peon2 = Peon::new((3,2), Color::Blanco);
+        let caballo = Caballo::new((1, 1), Color::Negro);
+        let peon = Peon::new((2, 3), Color::Blanco);
+        let peon2 = Peon::new((3, 2), Color::Blanco);
 
         assert_eq!(caballo.puede_capturar(&peon), true);
         assert_eq!(caballo.puede_capturar(&peon2), true);
@@ -50,8 +50,8 @@ mod tests {
 
     #[test]
     fn caballo_no_captura() {
-        let caballo = Caballo::new((1,2), Color::Negro);
-        let peon = Peon::new((3,4), Color::Blanco);
+        let caballo = Caballo::new((1, 2), Color::Negro);
+        let peon = Peon::new((3, 4), Color::Blanco);
 
         assert_eq!(caballo.puede_capturar(&peon), false);
     }

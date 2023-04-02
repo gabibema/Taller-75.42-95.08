@@ -42,16 +42,16 @@ mod tests {
 
     #[test]
     fn peon_captura() {
-        let peon = Peon::new((4,4), Color::Negro);
-        let peon2 = Peon::new((5,5), Color::Blanco);
+        let peon = Peon::new((4, 4), Color::Negro);
+        let peon2 = Peon::new((5, 5), Color::Blanco);
 
         assert_eq!(peon.puede_capturar(&peon2), true);
     }
 
     #[test]
     fn peon_no_captura() {
-        let peon = Peon::new((4,4), Color::Negro);
-        let peon2 = Peon::new((5,6), Color::Blanco);
+        let peon = Peon::new((4, 4), Color::Negro);
+        let peon2 = Peon::new((5, 6), Color::Blanco);
 
         assert_eq!(peon.puede_capturar(&peon2), false);
     }

@@ -31,7 +31,6 @@ pub mod constantes {
     pub const MENSAJE_EMPATE: char = 'E';
 }
 
-
 pub mod errores {
     use std::io::Error;
     use std::io::ErrorKind::{InvalidData, InvalidInput};

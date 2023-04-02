@@ -1,14 +1,13 @@
-use std::fs::read_to_string;
-use ejercicio_individual::utils::errores::{error_pieza_invalida, error_piezas_invalidas};
 use ejercicio_individual::operaciones::{crear_piezas, estado_piezas};
 use ejercicio_individual::utils::constantes::*;
-
+use ejercicio_individual::utils::errores::{error_pieza_invalida, error_piezas_invalidas};
+use std::fs::read_to_string;
 
 #[test]
 fn prueba_tablero_vacio() {
-    let mut tablero: String = match read_to_string("./src/tableros/tablero_vacio.txt"){
+    let mut tablero: String = match read_to_string("./src/tableros/tablero_vacio.txt") {
         Ok(resultado) => resultado,
-        Err(_error) =>  return assert!(false, "El archivo no se pudo leer correctamente"),
+        Err(_error) => return assert!(false, "El archivo no se pudo leer correctamente"),
     };
 
     match crear_piezas(&mut tablero) {
@@ -19,9 +18,9 @@ fn prueba_tablero_vacio() {
 
 #[test]
 fn prueba_tablero_invalido() {
-    let mut tablero: String = match read_to_string("./src/tableros/tablero_invalido.txt"){
+    let mut tablero: String = match read_to_string("./src/tableros/tablero_invalido.txt") {
         Ok(resultado) => resultado,
-        Err(_error) =>  return assert!(false, "El archivo no se pudo leer correctamente"),
+        Err(_error) => return assert!(false, "El archivo no se pudo leer correctamente"),
     };
 
     match crear_piezas(&mut tablero) {
@@ -32,12 +31,12 @@ fn prueba_tablero_invalido() {
 
 #[test]
 fn prueba_tablero_con_piezas_blanca_captura() {
-    let mut tablero: String = match read_to_string("./src/tableros/tablero1.txt"){
+    let mut tablero: String = match read_to_string("./src/tableros/tablero1.txt") {
         Ok(resultado) => resultado,
-        Err(_error) =>  return assert!(false, "El archivo no se pudo leer correctamente"),
+        Err(_error) => return assert!(false, "El archivo no se pudo leer correctamente"),
     };
 
-    let piezas= match crear_piezas(&mut tablero) {
+    let piezas = match crear_piezas(&mut tablero) {
         Ok(resultado) => resultado,
         Err(_error) => return assert!(false, "Las piezas no se pudieron leer correctamente"),
     };
@@ -47,12 +46,12 @@ fn prueba_tablero_con_piezas_blanca_captura() {
 
 #[test]
 fn prueba_tablero_con_piezas_negra_captura() {
-    let mut tablero: String = match read_to_string("./src/tableros/tablero2.txt"){
+    let mut tablero: String = match read_to_string("./src/tableros/tablero2.txt") {
         Ok(resultado) => resultado,
-        Err(_error) =>  return assert!(false, "El archivo no se pudo leer correctamente"),
+        Err(_error) => return assert!(false, "El archivo no se pudo leer correctamente"),
     };
 
-    let piezas= match crear_piezas(&mut tablero) {
+    let piezas = match crear_piezas(&mut tablero) {
         Ok(resultado) => resultado,
         Err(_error) => return assert!(false, "Las piezas no se pudieron leer correctamente"),
     };
@@ -62,14 +61,14 @@ fn prueba_tablero_con_piezas_negra_captura() {
 
 #[test]
 fn prueba_tablero_con_piezas_empate() {
-    let mut tablero: String = match read_to_string("../src/tableros/tablero3.txt"){
+    let mut tablero: String = match read_to_string("../src/tableros/tablero3.txt") {
         Ok(resultado) => resultado,
         Err(_error) => return (),
     };
 
-    let piezas= match crear_piezas(&mut tablero) {
+    let piezas = match crear_piezas(&mut tablero) {
         Ok(resultado) => resultado,
-        Err(_error) => return(),
+        Err(_error) => return (),
     };
 
     assert_eq!(estado_piezas(&*piezas[0], &*piezas[1]), AMBAS_CAPTURAN)
@@ -77,16 +76,15 @@ fn prueba_tablero_con_piezas_empate() {
 
 #[test]
 fn prueba_tablero_con_piezas_sin_captura() {
-    let mut tablero: String = match read_to_string("../src/tableros/tablero4.txt"){
+    let mut tablero: String = match read_to_string("../src/tableros/tablero4.txt") {
         Ok(resultado) => resultado,
         Err(_error) => return (),
     };
 
-    let piezas= match crear_piezas(&mut tablero) {
+    let piezas = match crear_piezas(&mut tablero) {
         Ok(resultado) => resultado,
-        Err(_error) => return(),
+        Err(_error) => return (),
     };
 
     assert_eq!(estado_piezas(&*piezas[0], &*piezas[1]), NO_CAPTURA)
 }
-
